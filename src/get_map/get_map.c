@@ -31,10 +31,11 @@ char **get_map(int size_y)
     for (int i = 1; i < size_y; i++)
         size_x += 2;
     for (int i = 0; i < size_y + 2; i++) {
-        tab[i] = malloc(sizeof(char) * (size_x + 3));
+        tab[i] = malloc(sizeof(char) * (size_x + 4));
         if (!tab[i])
             return NULL;
-        tab[i][size_x + 2] = '\0';
+        tab[i][size_x + 3] = '\0';
+        tab[i][size_x + 2] = '\n';
     }
     map_filler(tab, size_x, size_y);
     return tab;

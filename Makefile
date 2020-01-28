@@ -10,10 +10,10 @@ SRC	=	src/main.c	\
 		src/end.c	\
 		src/game.c	\
 		src/ia2.c	\
+		src/my_revgetnbr.c	\
 		src/get_map/get_map.c	\
 		src/stick_get/get_my_stick.c	\
 		src/stick_get/put_stick.c	\
-		src/stick_get/iatest.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -25,7 +25,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/my
-	gcc -o	$(NAME)	$(OBJ) -I ./include -L./lib/my -lmy
+	gcc -o	$(NAME)	$(OBJ) -I ./include -L./lib/my -lmy -lncurses
 
 clean:
 	rm	-f 	$(OBJ)

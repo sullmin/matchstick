@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_putstr.c
+** printw.c
 ** File description:
 ** task02
 */

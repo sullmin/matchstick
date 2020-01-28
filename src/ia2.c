@@ -7,8 +7,19 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "my.h"
 #include "matchstick.h"
+
+void display_nbr(int nb)
+{
+    char *temp = myrevgetnbr(nb);
+
+    if (!temp)
+        return;
+    printw(temp);
+    free(temp);
+}
 
 static int grundy(int *my_stick)
 {
@@ -51,19 +62,21 @@ static void how_play(int *my_stick, int max_nb, int *line, int *nb)
     }
 }
 
-void ai_for_ia(int *my_stick, int max_nb)
+void ai_played(int *my_stick, int max_nb)
 {
     int nb = -1;
     int line = -1;
 
-    //my_putstr("\nAI's turn...\n");
+    erase();
+    printw("\nAI's turn...\n");
+    sleep(2);
     how_play(my_stick, max_nb, &line, &nb);
     if (nb == -1 || line == -1)
         error_gest_no_value(my_stick, max_nb, &line, &nb);
-    //my_putstr("AI removed ");
-    //my_put_nbr(nb);
-    //my_putstr(" match(es) from line ");
-    //my_put_nbr(line);
-    //my_putchar('\n');
+    printw("AI removed ");
+    display_nbr(nb);
+    printw(" match(es) from line ");
+    display_nbr(line);
+    printw("\n");
     rm_stick(my_stick, line, nb);
 }

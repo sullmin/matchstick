@@ -11,7 +11,7 @@
 static void my_clear_map(char **map)
 {
     for (int i = 1; map[i + 1] != NULL; i++) {
-        for (int u = 1; map[i][u + 1] != '\0'; u++) {
+        for (int u = 1; map[i][u + 2] != '\0'; u++) {
             map[i][u] = ' ';
         }
     }
@@ -24,8 +24,8 @@ void my_stick_put(char **map, int *my_stick)
 
     my_clear_map(map);
     for (int i = 1; map[i + 1] != NULL; i++) {
-        for (int u = 1; map[i][u + 1] != '\0'; u++) {
-            if (u > size / 2 && cnt < my_stick[i]) {
+        for (int u = 1; map[i][u + 2] != '\0'; u++) {
+            if (u > size / 2 - 1 && cnt < my_stick[i]) {
                 map[i][u] = '|';
                 cnt++;
             }
